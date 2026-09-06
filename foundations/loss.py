@@ -21,5 +21,6 @@ class Solution:
         # return round(your_answer, 4)
         e = 1e-7
         y_pred = np.clip(y_pred, e, 1-e)
-        s = np.sum(y_true * np.log(y_pred))
-        return np.round(-s / (len(y_true)), 4)
+        m = y_true * np.log(y_pred)
+        s = -np.mean(np.sum(m, axis=1))
+        return np.round(s, 4)
